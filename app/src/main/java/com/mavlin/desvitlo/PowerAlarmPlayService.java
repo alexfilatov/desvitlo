@@ -31,7 +31,7 @@ public class PowerAlarmPlayService extends Service {
         if (!isPlaying) {
             isPlaying = true;
 
-            mediaPlayer = MediaPlayer.create(this, R.raw.harry); // change this for your file
+            mediaPlayer = MediaPlayer.create(this, R.raw.bomb_siren); // change this for your file
             mediaPlayer.setLooping(true); // this will make it loop forever
             mediaPlayer.start();
         }

@@ -56,12 +56,16 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.receiver_activated), Toast.LENGTH_LONG).show();
         } else {
             // stop siren play
-            Intent myIntent = new Intent(getApplicationContext(), PowerAlarmPlayService.class);
-            stopService(myIntent);
-
             pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP);
             Toast.makeText(getApplicationContext(), getString(R.string.receiver_deactivated), Toast.LENGTH_LONG).show();
+
+            // stop play if it is playing
+            Intent play_intent = new Intent(getApplicationContext(), PowerAlarmPlayService.class);
+            if (play_intent.getBooleanExtra(PowerAlarmPlayService.START_PLAY, true)) {
+                stopService(play_intent);
+            }
+
         }
     }
 }
