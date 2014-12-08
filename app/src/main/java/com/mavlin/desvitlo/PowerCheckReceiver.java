@@ -17,10 +17,16 @@ public class PowerCheckReceiver extends BroadcastReceiver {
             Toast.makeText(context.getApplicationContext(), context.getString(R.string.power_disconnected), Toast.LENGTH_LONG).show();
             // play alarm here
 
+            Intent play_intent = new Intent(context, PowerAlarmPlayService.class);
+            play_intent.putExtra(PowerAlarmPlayService.START_PLAY, true);
+            context.startService(play_intent);
 
-
-        } else if(intent.getAction().equals("android.intent.action.ACTION_POWER_CONNECTED")) {
+        } else if (intent.getAction().equals("android.intent.action.ACTION_POWER_CONNECTED")) {
             Toast.makeText(context.getApplicationContext(), context.getString(R.string.power_connected), Toast.LENGTH_LONG).show();
+
+            // stop alarm
+            Intent play_intent = new Intent(context, PowerAlarmPlayService.class);
+            context.stopService(play_intent);
         }
 
     }

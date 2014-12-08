@@ -1,7 +1,9 @@
 package com.mavlin.desvitlo;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -11,7 +13,9 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
-public class Main extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity {
+
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +47,18 @@ public class Main extends ActionBarActivity {
         // Is the toggle on?
         boolean on = ((ToggleButton) view).isChecked();
 
-        PackageManager pm = Main.this.getPackageManager();
-        ComponentName componentName = new ComponentName(Main.this, PowerCheckReceiver.class);
+        PackageManager pm = MainActivity.this.getPackageManager();
+        ComponentName componentName = new ComponentName(MainActivity.this, PowerCheckReceiver.class);
 
         if (on) {
             pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                     PackageManager.DONT_KILL_APP);
             Toast.makeText(getApplicationContext(), getString(R.string.receiver_activated), Toast.LENGTH_LONG).show();
         } else {
+            // stop siren play
+            Intent myIntent = new Intent(getApplicationContext(), PowerAlarmPlayService.class);
+            stopService(myIntent);
+
             pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP);
             Toast.makeText(getApplicationContext(), getString(R.string.receiver_deactivated), Toast.LENGTH_LONG).show();
