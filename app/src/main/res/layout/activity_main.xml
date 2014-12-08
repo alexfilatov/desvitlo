@@ -22,5 +22,15 @@
         android:textOn="@string/turn_monitor_off"
         android:textOff="@string/turn_monitor_on" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Connected"
+        android:id="@+id/textViewPowerState"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp" />
+
 
 </RelativeLayout>

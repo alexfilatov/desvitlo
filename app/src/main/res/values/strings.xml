@@ -11,5 +11,7 @@
     <string name="turn_monitor_off">Turn OFF Power Monitoring</string>
     <string name="turn_monitor_on">Turn ON Power Monitoring</string>
     <string name="toggle_button_name">ToggleButton</string>
+    <string name="power_connected_value">Connected</string>
+    <string name="power_disconnected_value">Disconnected</string>
 
 </resources>

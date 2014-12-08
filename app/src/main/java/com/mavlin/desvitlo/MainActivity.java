@@ -1,7 +1,10 @@
 package com.mavlin.desvitlo;
 
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,18 +12,38 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private MediaPlayer mediaPlayer;
+    private BroadcastReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+        filter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
+
+        PowerCheckReceiver receiver = new PowerCheckReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                if (intent.getAction().equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+                    TextView t = (TextView) findViewById(R.id.textViewPowerState);
+                    t.setText(getString(R.string.power_disconnected_value));
+                } else if (intent.getAction().equals("android.intent.action.ACTION_POWER_CONNECTED")) {
+                    TextView t = (TextView) findViewById(R.id.textViewPowerState);
+                    t.setText(getString(R.string.power_connected_value));
+                }
+            }
+        };
+        registerReceiver(receiver, filter);
     }
 
 
@@ -53,19 +76,16 @@ public class MainActivity extends ActionBarActivity {
         if (on) {
             pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                     PackageManager.DONT_KILL_APP);
-            Toast.makeText(getApplicationContext(), getString(R.string.receiver_activated), Toast.LENGTH_LONG).show();
         } else {
             // stop siren play
             pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP);
-            Toast.makeText(getApplicationContext(), getString(R.string.receiver_deactivated), Toast.LENGTH_LONG).show();
 
             // stop play if it is playing
             Intent play_intent = new Intent(getApplicationContext(), PowerAlarmPlayService.class);
             if (play_intent.getBooleanExtra(PowerAlarmPlayService.START_PLAY, true)) {
                 stopService(play_intent);
             }
-
         }
     }
 }
