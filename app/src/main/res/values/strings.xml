@@ -4,5 +4,9 @@
     <string name="app_name">DeSvitlo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="receiver_activated">ACTIVATED</string>
+    <string name="receiver_deactivated">DEACTIVATED</string>
+    <string name="power_disconnected">POWER DISCONNECTED!</string>
+    <string name="power_connected">POWER CONNECTED!</string>
 
 </resources>
