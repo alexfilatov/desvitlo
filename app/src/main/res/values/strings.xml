@@ -8,5 +8,8 @@
     <string name="receiver_deactivated">DEACTIVATED</string>
     <string name="power_disconnected">POWER DISCONNECTED!</string>
     <string name="power_connected">POWER CONNECTED!</string>
+    <string name="turn_monitor_off">Turn OFF Power Monitoring</string>
+    <string name="turn_monitor_on">Turn ON Power Monitoring</string>
+    <string name="toggle_button_name">ToggleButton</string>
 
 </resources>
