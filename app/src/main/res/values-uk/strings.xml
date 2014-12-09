@@ -1,17 +1,9 @@
 <resources>
 
-    <string name="action_settings">Налаштування</string>
     <string name="app_name">Де Світло?</string>
     <string name="label_exit">Вихід</string>
-    <string name="power_connected">Живлення під\'єднано!</string>
     <string name="power_connected_value">Під\'єднано</string>
-    <string name="power_disconnected">Живлення від\'єднано!</string>
     <string name="power_disconnected_value">Від\'єднано</string>
-    <string name="pref_default_display_name">Джон Сміт</string>
-    <string name="receiver_activated">АКТИВОВАНО</string>
-    <string name="receiver_deactivated">ДЕАКТИВОВАНО</string>
-    <string name="title_activity_settings">Налаштування</string>
-    <string name="toggle_button_name">Странна Кнопка</string>
     <string name="turn_monitor_off">Виключити монітор живлення</string>
     <string name="turn_monitor_on">Включити монітор живлення</string>
 

@@ -11,7 +11,7 @@
     <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/toggle_button_name"
+        android:text="@string/power_connected_value"
         android:id="@+id/toggleButton"
         android:onClick="onToggleClicked"
         android:layout_centerVertical="true"
