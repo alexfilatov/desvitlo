@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Где Свет?</string>
+    <string name="label_exit">Выход</string>
+    <string name="power_connected_value">Подключено</string>
+    <string name="power_disconnected_value">Отключено</string>
+    <string name="turn_monitor_off">Выключить монитор питания</string>
+    <string name="turn_monitor_on">Включить монитор питания</string>
+
+</resources>
