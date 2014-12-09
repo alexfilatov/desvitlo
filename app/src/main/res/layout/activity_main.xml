@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <ToggleButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/toggle_button_name"
         android:id="@+id/toggleButton"
@@ -17,7 +17,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:checked="false"
-        android:textSize="13dp"
+        android:textSize="15dp"
         android:gravity="center_vertical|center_horizontal"
         android:textOn="@string/turn_monitor_off"
         android:textOff="@string/turn_monitor_on" />
