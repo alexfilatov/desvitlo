@@ -13,5 +13,6 @@
     <string name="toggle_button_name">ToggleButton</string>
     <string name="power_connected_value">Connected</string>
     <string name="power_disconnected_value">Disconnected</string>
+    <string name="label_exit">Exit</string>
 
 </resources>
