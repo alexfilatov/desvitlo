@@ -6,5 +6,7 @@
     <string name="power_disconnected_value">Від\'єднано</string>
     <string name="turn_monitor_off">Виключити монітор живлення</string>
     <string name="turn_monitor_on">Включити монітор живлення</string>
+    <string name="alarming">Алярма!</string>
+    <string name="alarm_notification_message">Влада ввимкнула світло!</string>
 
 </resources>

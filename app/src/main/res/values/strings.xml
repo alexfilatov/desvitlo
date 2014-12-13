@@ -7,5 +7,7 @@
     <string name="power_connected_value">Connected</string>
     <string name="power_disconnected_value">Disconnected</string>
     <string name="label_exit">Exit</string>
+    <string name="alarm_notification_message">Government switched off the power!</string>
+    <string name="alarming">Alarm!</string>
 
 </resources>

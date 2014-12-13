@@ -30,10 +30,10 @@ public class MainActivity extends ActionBarActivity {
         filter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
         filter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
 
+        // creating receiver just for changing text connected/disconnected
         PowerCheckReceiver receiver = new PowerCheckReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-
                 if (intent.getAction().equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
                     TextView t = (TextView) findViewById(R.id.textViewPowerState);
                     t.setText(getString(R.string.power_disconnected_value));
@@ -44,8 +44,13 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         registerReceiver(receiver, filter);
-    }
 
+        // disabling receiver for alarm play
+        PackageManager pm = MainActivity.this.getPackageManager();
+        ComponentName componentName = new ComponentName(MainActivity.this, PowerCheckReceiver.class);
+        pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +66,13 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_exit) {
+            try {
+                unregisterReceiver(receiver);
+            } catch (IllegalArgumentException e) {
+                // looks like receiver is not registered
+                e.printStackTrace();
+            }
+
             finish();
             System.exit(0);
         }

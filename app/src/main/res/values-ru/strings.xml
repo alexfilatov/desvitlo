@@ -6,5 +6,7 @@
     <string name="power_disconnected_value">Отключено</string>
     <string name="turn_monitor_off">Выключить монитор питания</string>
     <string name="turn_monitor_on">Включить монитор питания</string>
+    <string name="alarming">Тревога!</string>
+    <string name="alarm_notification_message">Власть выключила свет!</string>
 
 </resources>
